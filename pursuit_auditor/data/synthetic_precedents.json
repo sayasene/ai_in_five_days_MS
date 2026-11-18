@@ -1,0 +1,47 @@
+[
+  {
+    "precedent_id": "PREC-2026-001",
+    "account_sector": "Retail",
+    "deliverable_type": "services_strategy_deck",
+    "gate": "Gate 1",
+    "pattern_title": "Summary vs. Deep-Dive Timeline & Funding Drift",
+    "summary": "Executive summary slide listed 18-month migration at $3.2M GSF while deep-dive staffing chevrons summed to 24 months and $4.6M GSF because legacy raw sheet tab was used instead of Post_Discount_InScope_Summary.",
+    "resolution": "Reconciled every workstream chevron against the authoritative post-discount tab and updated Slide 2 rollup totals before pricing review."
+  },
+  {
+    "precedent_id": "PREC-2026-002",
+    "account_sector": "Logistics",
+    "deliverable_type": "partner_proposal",
+    "gate": "Gate 2",
+    "pattern_title": "Internal Rate Card & Credit Ratio Leak in Partner Deck",
+    "summary": "Partner-facing scope proposal exposed internal GSF monthly FTE rate cards ($150K/mo) and exact GSF-to-PSF funding ratio, enabling external reverse-engineering of cloud consulting margins.",
+    "resolution": "Removed internal rate card figures, credit pool percentages, and FTE-to-dollar breakdowns from partner deck; replaced with deliverable-based workstream outcomes and joint RACI milestones."
+  },
+  {
+    "precedent_id": "PREC-2026-003",
+    "account_sector": "Retail",
+    "deliverable_type": "services_strategy_deck",
+    "gate": "Gate 2",
+    "pattern_title": "Advisory vs. Hands-On Execution Boundary Blur",
+    "summary": "Deck stated consulting team would 'manage the system integrator delivery team and execute all ETL cutovers', contradicting the Control Tower advisory construct and creating commercial delivery liability.",
+    "resolution": "Reframed consulting accountability to architecture stage-gate QA, golden blueprint certification, and AI migration accelerator enablement while assigning hands-on execution and SI management to customer and SI partner."
+  },
+  {
+    "precedent_id": "PREC-2026-004",
+    "account_sector": "Healthcare",
+    "deliverable_type": "preview_sow",
+    "gate": "Gate 2",
+    "pattern_title": "Missing Customer Dependencies and Objective Acceptance Criteria in Preview SOW",
+    "summary": "Agentic AI Preview SOW lacked explicit customer data-access lead times, non-production environment prerequisites, and measurable deliverable acceptance gates.",
+    "resolution": "Inserted Customer Responsibilities matrix, 5-business-day sign-off SLA, and quantitative evaluation acceptance thresholds."
+  },
+  {
+    "precedent_id": "PREC-2026-005",
+    "account_sector": "Manufacturing",
+    "deliverable_type": "services_strategy_deck",
+    "gate": "Gate 3",
+    "pattern_title": "Wall-of-Text Table Cells and Non-Compliant Multi-Hue Cards",
+    "summary": "Credit strategy slide used 4-color pastel rounded cards, emojis in status columns, and 38-word outcome cells that wrapped to 5 lines.",
+    "resolution": "Converted to sharp 0px monochrome graphite layout with single blue focal numeral, removed emojis, and compressed every table cell to <=15 words with a bold outcome lead-in."
+  }
+]

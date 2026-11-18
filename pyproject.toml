@@ -1,0 +1,66 @@
+[build-system]
+requires = ["hatchling>=1.25.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pursuit-auditor-agent"
+version = "1.0.0"
+description = "Multi-agent Pursuit Deliverable Auditor built with Google ADK for 4-gate financial reconciliation, commercial guardrails, executive aesthetic review, and stakeholder Q&A synthesis."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Pursuit Engineering" }]
+dependencies = [
+  "google-adk>=1.18.0,<2.0.0",
+  "google-genai>=1.40.0",
+  "pydantic>=2.10.0",
+  "pydantic-settings>=2.7.0",
+  "structlog>=25.1.0",
+  "python-json-logger>=3.2.0",
+  "opentelemetry-api>=1.29.0",
+  "opentelemetry-sdk>=1.29.0",
+  "sqlalchemy[asyncio]>=2.0.36",
+  "greenlet>=3.1.0",
+  "aiosqlite>=0.20.0",
+  "fastapi>=0.115.0",
+  "uvicorn[standard]>=0.32.0",
+]
+
+[project.optional-dependencies]
+gcp = [
+  "google-cloud-secret-manager>=2.22.0",
+  "google-cloud-dlp>=3.26.0",
+  "google-cloud-modelarmor>=0.1.0",
+  "opentelemetry-exporter-gcp-trace>=1.9.0",
+  "google-cloud-logging>=3.11.0",
+  "psycopg[binary]>=3.2.0",
+]
+dev = [
+  "pytest>=8.3.0",
+  "pytest-asyncio>=0.25.0",
+  "ruff>=0.9.0",
+  "mypy>=1.14.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["pursuit_auditor"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+warn_unused_ignores = true
+check_untyped_defs = true

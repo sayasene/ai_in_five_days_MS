@@ -1,0 +1,283 @@
+{
+  "eval_set_id": "pursuit_auditor_golden_v1",
+  "name": "Pursuit Deliverable Auditor Golden Evaluation Set",
+  "description": "Six synthetic end-to-end golden test cases covering PASS, Gate 1 math drift, Gate 2 external pricing leak, Gate 2 advisory boundary overreach, Gate 3 aesthetic clutter, and HITL release confirmation.",
+  "eval_cases": [
+    {
+      "eval_id": "case_01_clean_northstar_pass",
+      "session_input": {
+        "app_name": "pursuit_auditor",
+        "user_id": "eval_pursuit_lead",
+        "state": {
+          "target_audience": "internal_leadership",
+          "deliverable_type": "services_strategy_deck"
+        }
+      },
+      "conversation": [
+        {
+          "invocation_id": "inv_01",
+          "user_content": {
+            "role": "user",
+            "parts": [
+              {
+                "text": "Audit the Northstar Retail Services Strategy deck (deal_id OPP-SYNTH-2026-001) for internal leadership. Source tab: Post_Discount_InScope_Summary. Total cost $10M ($3.2M GSF + $6.8M PSF) over 18 months. Row #1 Program Governance (DE & EA) Control Tower at $0 ARR, Infrastructure Migration broken out separately, monochrome graphite + #1A73E8 palette, 0px sharp geometry, 10-18pt fonts, table cells <= 15 words."
+              }
+            ]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "fetch_authoritative_deal_baseline",
+                "args": {
+                  "deal_id": "OPP-SYNTH-2026-001"
+                }
+              },
+              {
+                "name": "reconcile_financial_rollups_and_rate_cards",
+                "args": {
+                  "deal_id": "OPP-SYNTH-2026-001"
+                }
+              }
+            ]
+          },
+          "final_response": {
+            "role": "model",
+            "parts": [
+              {
+                "text": "Verdict: PASS (0 BLOCKING issues). All financial rollups match Post_Discount_InScope_Summary, Control Tower governance sits at Row #1 ($0 ARR), aesthetic standards pass, and the 1-page Executive Comprehension & Q&A Brief is attached."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "eval_id": "case_02_gate1_math_and_raw_tab_drift_revise",
+      "session_input": {
+        "app_name": "pursuit_auditor",
+        "user_id": "eval_pursuit_lead",
+        "state": {
+          "target_audience": "pricing_committee",
+          "deliverable_type": "services_strategy_deck"
+        }
+      },
+      "conversation": [
+        {
+          "invocation_id": "inv_02",
+          "user_content": {
+            "role": "user",
+            "parts": [
+              {
+                "text": "Audit Northstar Retail deck (OPP-SYNTH-2026-001) for pricing_committee. Slide 2 reports 18 months and $12M total ($4M GSF + $8M PSF) from tab Legacy_Raw_Tab, while Slide 9 deep-dive chevrons extend to 24 months."
+              }
+            ]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "fetch_authoritative_deal_baseline",
+                "args": {
+                  "deal_id": "OPP-SYNTH-2026-001"
+                }
+              },
+              {
+                "name": "reconcile_financial_rollups_and_rate_cards",
+                "args": {
+                  "deal_id": "OPP-SYNTH-2026-001"
+                }
+              }
+            ]
+          },
+          "final_response": {
+            "role": "model",
+            "parts": [
+              {
+                "text": "Verdict: REVISE (BLOCKING Gate 1 defects). Cited Legacy_Raw_Tab instead of Post_Discount_InScope_Summary, executive summary totals diverge from baseline ($10M = $3.2M GSF + $6.8M PSF), and 24-month deep-dive chevrons conflict with the 18-month summary timeline."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "eval_id": "case_03_gate2_partner_rate_card_leak_revise",
+      "session_input": {
+        "app_name": "pursuit_auditor",
+        "user_id": "eval_pursuit_lead",
+        "state": {
+          "target_audience": "partner",
+          "deliverable_type": "partner_proposal"
+        }
+      },
+      "conversation": [
+        {
+          "invocation_id": "inv_03",
+          "user_content": {
+            "role": "user",
+            "parts": [
+              {
+                "text": "Audit Crestline Logistics partner proposal (OPP-SYNTH-2026-002) intended for SI partner review. Slide 4 includes internal FTE rate card ($150K/mo) and GSF-to-PSF margin ratio."
+              }
+            ]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "fetch_authoritative_deal_baseline",
+                "args": {
+                  "deal_id": "OPP-SYNTH-2026-002"
+                }
+              },
+              {
+                "name": "inspect_commercial_posture_and_leak_guardrails",
+                "args": {
+                  "deliverable_type": "partner_proposal",
+                  "audience": "partner"
+                }
+              }
+            ]
+          },
+          "final_response": {
+            "role": "model",
+            "parts": [
+              {
+                "text": "Verdict: REVISE (BLOCKING Gate 2 external confidentiality leak). Strip all internal monthly rate cards and GSF-to-PSF ratio calculations before sharing with the SI partner."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "eval_id": "case_04_gate2_control_tower_execution_overreach_revise",
+      "session_input": {
+        "app_name": "pursuit_auditor",
+        "user_id": "eval_pursuit_lead",
+        "state": {
+          "target_audience": "customer",
+          "deliverable_type": "preview_sow"
+        }
+      },
+      "conversation": [
+        {
+          "invocation_id": "inv_04",
+          "user_content": {
+            "role": "user",
+            "parts": [
+              {
+                "text": "Audit Meridian Health Preview SOW (OPP-SYNTH-2026-003) for customer review. Scope states Cloud Consulting will manage the SI delivery team and execute all hands-on ETL cutovers, with no Acceptance Criteria or Out of Scope section."
+              }
+            ]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "inspect_commercial_posture_and_leak_guardrails",
+                "args": {
+                  "deliverable_type": "preview_sow",
+                  "audience": "customer"
+                }
+              }
+            ]
+          },
+          "final_response": {
+            "role": "model",
+            "parts": [
+              {
+                "text": "Verdict: REVISE (BLOCKING Gate 2 posture and SOW defects). Remove hands-on cutover/SI management claims and insert Customer Dependencies, Objective Acceptance Criteria, and Out of Scope clauses."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "eval_id": "case_05_gate3_aesthetic_rainbow_and_wall_of_text_revise",
+      "session_input": {
+        "app_name": "pursuit_auditor",
+        "user_id": "eval_pursuit_lead",
+        "state": {
+          "target_audience": "internal_leadership",
+          "deliverable_type": "services_strategy_deck"
+        }
+      },
+      "conversation": [
+        {
+          "invocation_id": "inv_05",
+          "user_content": {
+            "role": "user",
+            "parts": [
+              {
+                "text": "Audit visual aesthetics on Northstar Retail deck: Slide 3 uses rounded pastel cards (#E8F0FE), 4-color rainbow bars (#EA4335, #FBBC05), 8pt text, emojis in headers, and 32-word table cells."
+              }
+            ]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "audit_executive_aesthetic_and_density",
+                "args": {
+                  "deliverable_type": "services_strategy_deck"
+                }
+              }
+            ]
+          },
+          "final_response": {
+            "role": "model",
+            "parts": [
+              {
+                "text": "Verdict: REVISE (BLOCKING Gate 3 aesthetic defects). Replace rounded pastel/rainbow elements with sharp 0px monochrome graphite layout + single #1A73E8 accent, lock fonts to 10-24pt, remove emojis, and tighten cells to <= 15 words."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "eval_id": "case_06_hitl_high_tcv_release_confirmation_pause",
+      "session_input": {
+        "app_name": "pursuit_auditor",
+        "user_id": "eval_pursuit_lead",
+        "state": {
+          "target_audience": "customer",
+          "deliverable_type": "customer_proposal"
+        }
+      },
+      "conversation": [
+        {
+          "invocation_id": "inv_06",
+          "user_content": {
+            "role": "user",
+            "parts": [
+              {
+                "text": "Certify Northstar Retail Customer Proposal (OPP-SYNTH-2026-001, $45M TCV, PASS with 0 blocking issues) for immediate external customer release."
+              }
+            ]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "certify_deliverable_for_external_release",
+                "args": {
+                  "deal_id": "OPP-SYNTH-2026-001",
+                  "audience": "customer",
+                  "verdict": "PASS",
+                  "blocking_count": 0,
+                  "total_deal_value_usd": 45000000
+                }
+              }
+            ]
+          },
+          "final_response": {
+            "role": "model",
+            "parts": [
+              {
+                "text": "Paused at Human-in-the-Loop release gate: external customer release of a $45M TCV proposal requires explicit Pursuit Lead confirmation before certification."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

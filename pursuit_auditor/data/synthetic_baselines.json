@@ -1,0 +1,178 @@
+{
+  "metadata": {
+    "disclaimer": "100% synthetic consulting deal baselines for demonstration and automated evaluation. Contains no real customer, pricing, or CRM records.",
+    "schema_version": "1.0.0"
+  },
+  "rate_card_benchmarks_usd_per_month": {
+    "is_synthetic_benchmark": true,
+    "governance_senior_fte": 150000,
+    "onshore_specialist_fte": 110000,
+    "offshore_specialist_fte": 40000,
+    "blended_50_50_fte": 75000,
+    "tolerance_pct": 0.12
+  },
+  "deals": {
+    "OPP-SYNTH-2026-001": {
+      "deal_id": "OPP-SYNTH-2026-001",
+      "account_name": "Northstar Retail",
+      "engagement_title": "Core ERP & Analytics Cloud Modernization",
+      "source_sheet_name": "Northstar_DealModel_v4_Final",
+      "authoritative_tab": "Post_Discount_InScope_Summary",
+      "authoritative_column": "Column G (Net Post-Discount In-Scope)",
+      "duration_months": 18,
+      "total_tcv_usd": 45000000,
+      "steady_state_arr_usd": 15000000,
+      "funding_envelope": {
+        "total_migration_cost_usd": 10000000,
+        "gsf_pso_usd": 3200000,
+        "psf_partner_usd": 6800000
+      },
+      "workstreams": [
+        {
+          "rank": 1,
+          "name": "Program Governance (DE & EA)",
+          "role": "Control Tower",
+          "steady_state_arr_usd": 0,
+          "gsf_pso_usd": 1350000,
+          "psf_partner_usd": 0,
+          "total_cost_usd": 1350000,
+          "duration_months": 18,
+          "planned_fte_months": 9.0,
+          "rate_tier": "governance_senior_fte"
+        },
+        {
+          "rank": 2,
+          "name": "Infrastructure Migration",
+          "role": "Architecture QA & Landing Zone",
+          "steady_state_arr_usd": 4500000,
+          "gsf_pso_usd": 650000,
+          "psf_partner_usd": 2350000,
+          "total_cost_usd": 3000000,
+          "duration_months": 12,
+          "planned_fte_months": 6.0,
+          "rate_tier": "onshore_specialist_fte"
+        },
+        {
+          "rank": 3,
+          "name": "Data Platform Modernization",
+          "role": "Golden Patterns & Parity QA",
+          "steady_state_arr_usd": 6500000,
+          "gsf_pso_usd": 700000,
+          "psf_partner_usd": 2700000,
+          "total_cost_usd": 3400000,
+          "duration_months": 18,
+          "planned_fte_months": 9.0,
+          "rate_tier": "blended_50_50_fte"
+        },
+        {
+          "rank": 4,
+          "name": "Application Modernization",
+          "role": "AI Migration Accelerators & Stage-Gate QA",
+          "steady_state_arr_usd": 4000000,
+          "gsf_pso_usd": 500000,
+          "psf_partner_usd": 1750000,
+          "total_cost_usd": 2250000,
+          "duration_months": 15,
+          "planned_fte_months": 6.5,
+          "rate_tier": "blended_50_50_fte"
+        }
+      ]
+    },
+    "OPP-SYNTH-2026-002": {
+      "deal_id": "OPP-SYNTH-2026-002",
+      "account_name": "Crestline Logistics",
+      "engagement_title": "Global Supply Chain Data Mesh",
+      "source_sheet_name": "Crestline_Services_Construct_v2",
+      "authoritative_tab": "Approved_Funding_Matrix",
+      "authoritative_column": "Column E (Approved Y1-Y2 Allocation)",
+      "duration_months": 12,
+      "total_tcv_usd": 24000000,
+      "steady_state_arr_usd": 8000000,
+      "funding_envelope": {
+        "total_migration_cost_usd": 5400000,
+        "gsf_pso_usd": 1800000,
+        "psf_partner_usd": 3600000
+      },
+      "workstreams": [
+        {
+          "rank": 1,
+          "name": "Program Governance (DE & EA)",
+          "role": "Control Tower",
+          "steady_state_arr_usd": 0,
+          "gsf_pso_usd": 900000,
+          "psf_partner_usd": 0,
+          "total_cost_usd": 900000,
+          "duration_months": 12,
+          "planned_fte_months": 6.0,
+          "rate_tier": "governance_senior_fte"
+        },
+        {
+          "rank": 2,
+          "name": "Infrastructure Migration",
+          "role": "Landing Zone Blueprints",
+          "steady_state_arr_usd": 2500000,
+          "gsf_pso_usd": 450000,
+          "psf_partner_usd": 1550000,
+          "total_cost_usd": 2000000,
+          "duration_months": 9,
+          "planned_fte_months": 4.0,
+          "rate_tier": "onshore_specialist_fte"
+        },
+        {
+          "rank": 3,
+          "name": "Data Mesh & Streaming Analytics",
+          "role": "Reference Pipelines & Cutover QA",
+          "steady_state_arr_usd": 5500000,
+          "gsf_pso_usd": 450000,
+          "psf_partner_usd": 2050000,
+          "total_cost_usd": 2500000,
+          "duration_months": 12,
+          "planned_fte_months": 6.0,
+          "rate_tier": "blended_50_50_fte"
+        }
+      ]
+    },
+    "OPP-SYNTH-2026-003": {
+      "deal_id": "OPP-SYNTH-2026-003",
+      "account_name": "Meridian Health",
+      "engagement_title": "Agentic Clinical Operations Platform Preview SOW",
+      "source_sheet_name": "Meridian_SOW_Estimate_v3",
+      "authoritative_tab": "SOW_Milestone_Schedule",
+      "authoritative_column": "Column D (Fixed-Scope Phase 1)",
+      "duration_months": 6,
+      "total_tcv_usd": 12000000,
+      "steady_state_arr_usd": 4000000,
+      "funding_envelope": {
+        "total_migration_cost_usd": 1950000,
+        "gsf_pso_usd": 950000,
+        "psf_partner_usd": 1000000
+      },
+      "workstreams": [
+        {
+          "rank": 1,
+          "name": "Program Governance (DE & EA)",
+          "role": "Control Tower",
+          "steady_state_arr_usd": 0,
+          "gsf_pso_usd": 450000,
+          "psf_partner_usd": 0,
+          "total_cost_usd": 450000,
+          "duration_months": 6,
+          "planned_fte_months": 3.0,
+          "rate_tier": "governance_senior_fte"
+        },
+        {
+          "rank": 2,
+          "name": "Agentic AI Architecture & Guardrails",
+          "role": "Evaluation Harness & Production Blueprint",
+          "steady_state_arr_usd": 4000000,
+          "gsf_pso_usd": 500000,
+          "psf_partner_usd": 1000000,
+          "total_cost_usd": 1500000,
+          "duration_months": 6,
+          "planned_fte_months": 4.5,
+          "rate_tier": "onshore_specialist_fte"
+        }
+      ]
+    }
+  }
+}

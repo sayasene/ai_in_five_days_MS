@@ -1,0 +1,7 @@
+project_id        = "example-pursuit-auditor-prod"
+region            = "us-central1"
+environment       = "prod"
+cloud_sql_tier    = "db-custom-2-7680"
+fast_model        = "gemini-2.5-flash"
+reasoning_model   = "gemini-2.5-pro"
+github_repository = "sayasene/ai_in_five_days_MS"

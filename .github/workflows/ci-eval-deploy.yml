@@ -1,0 +1,102 @@
+name: CI — Lint, Unit/Integration Tests, Golden Eval & Terraform
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  quality-and-tests:
+    name: Lint, Typecheck & Pytest Suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: uv sync --extra dev
+
+      - name: Run Ruff linter
+        run: uv run ruff check pursuit_auditor tests
+
+      - name: Run Mypy static type checker
+        run: uv run mypy pursuit_auditor
+
+      - name: Run unit and integration test suites
+        run: uv run pytest tests/unit tests/integration
+
+      - name: Run deterministic golden evaluation regression suite
+        run: uv run pytest tests/eval
+
+  terraform-validate:
+    name: Terraform Format & Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.8"
+
+      - name: Terraform fmt check
+        working-directory: deployment/terraform
+        run: terraform fmt -check -recursive
+
+      - name: Terraform init (no backend)
+        working-directory: deployment/terraform
+        run: terraform init -backend=false
+
+      - name: Terraform validate
+        working-directory: deployment/terraform
+        run: terraform validate
+
+  deploy-staging:
+    name: Deploy to Cloud Run (Staging via WIF)
+    runs-on: ubuntu-latest
+    needs: [quality-and-tests, terraform-validate]
+    if: github.ref == 'refs/heads/main' && vars.GCP_PROJECT_ID != ''
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud via Workload Identity Federation
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          service_account: ${{ vars.GCP_CICD_SA }}
+
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker ${{ vars.GCP_REGION }}-docker.pkg.dev --quiet
+
+      - name: Build and push container image
+        run: |
+          IMAGE="${{ vars.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/pursuit-auditor-agent/app:${{ github.sha }}"
+          docker build -t "$IMAGE" .
+          docker push "$IMAGE"
+
+      - name: Deploy revision to Cloud Run (secrets via Secret Manager)
+        run: |
+          IMAGE="${{ vars.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/pursuit-auditor-agent/app:${{ github.sha }}"
+          gcloud run deploy pursuit-auditor-agent-staging \
+            --image "$IMAGE" \
+            --region "${{ vars.GCP_REGION }}" \
+            --service-account "pursuit-auditor-agent-sa@${{ vars.GCP_PROJECT_ID }}.iam.gserviceaccount.com" \
+            --set-secrets "SESSION_DB_URL=pursuit-auditor-session-db-url:latest" \
+            --quiet
